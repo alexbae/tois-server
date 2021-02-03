@@ -23,7 +23,7 @@ price.post('/stock/price', cors(), async (req, res) => {
     const today = new Date()
     const yesterday = new Date(today)
 
-    yesterday.setDate(yesterday.getDate() - 3)
+    yesterday.setDate(yesterday.getDate() - 1)
 
     const date = yesterday.toISOString().split('T')[0]
 
