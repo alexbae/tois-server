@@ -22,8 +22,9 @@ price.post('/stock/price', cors(), async (req, res) => {
     console.log("stocks-api.js 14 | body", body.ticker);
     const today = new Date()
     const yesterday = new Date(today)
+    let backDate = 1
 
-    yesterday.setDate(yesterday.getDate() - 1)
+    yesterday.setDate(yesterday.getDate() - backDate)
 
     const date = yesterday.toISOString().split('T')[0]
 
@@ -33,7 +34,11 @@ price.post('/stock/price', cors(), async (req, res) => {
 
     const data = await request.json();
 
-    res.json(data);
+    if (data.status === 'OK') {
+        res.json(data);
+    } else {
+        backDate + 1
+    }
 });
 
 module.exports = price;
