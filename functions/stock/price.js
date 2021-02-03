@@ -21,12 +21,12 @@ price.post('/stock/price', cors(), async (req, res) => {
     const { ticker } = body;
     console.log("stocks-api.js 14 | body", body.ticker);
     const today = new Date()
-    const yesterday = new Date(today)
-    let backDate = 1
+    const currentDate = new Date(today)
+    let backDate = 0
 
-    yesterday.setDate(yesterday.getDate() - backDate)
+    currentDate.setDate(currentDate.getDate() - backDate)
 
-    const date = yesterday.toISOString().split('T')[0]
+    const date = currentDate.toISOString().split('T')[0]
 
     const request = await fetch(
         `https://api.polygon.io/v1/open-close/${ticker}/${date}?apiKey=${process.env.POLYGON_API_KEY}`
