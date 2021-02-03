@@ -22,7 +22,7 @@ price.post('/stock/price', cors(), async (req, res) => {
     console.log("stocks-api.js 14 | body", body.ticker);
 
     const request = await fetch(
-        `https://api.polygon.io/v2/aggs/ticker/${ticker}/prev?unadjusted=true?apiKey=${process.env.POLYGON_API_KEY}`
+        `https://api.polygon.io/v2/aggs/ticker/${ticker}/prev?unadjusted=true&apiKey=${process.env.POLYGON_API_KEY}`
     )
 
     const data = await request.json();
